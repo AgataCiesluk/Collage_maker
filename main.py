@@ -6,14 +6,16 @@ from dotenv import load_dotenv
 from json.decoder import JSONDecodeError
 
 load_dotenv()
+API_ACCESS_KEY = os.getenv('API_ACCESS_KEY')
+
+
+def get_url_for_given_photos_params(topic, photos_quantity, api_key):
+    return f'https://api.unsplash.com/search/photos?client_id={api_key}&page=2&query={topic}&per_page={photos_quantity}'
+
 
 if __name__ == '__main__':
 
-    topic = 'cat'
-
-    API_ACCESS_KEY = os.getenv('API_ACCESS_KEY')
-
-    response = requests.get(f'https://api.unsplash.com/search/photos?client_id={API_ACCESS_KEY}&page=1&query={topic}')
+    response = requests.get(get_url_for_given_photos_params('cat', 5, API_ACCESS_KEY))
 
     if response.status_code == 200:
         data = response.json()
