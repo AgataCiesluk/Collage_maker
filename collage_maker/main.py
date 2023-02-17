@@ -27,9 +27,30 @@ def download_photos():
             urls_small_photos.append(element['urls']['small'])
 
         for index, url in enumerate(urls_small_photos):
-            urllib.request.urlretrieve(url, f'photos/cat{index}.png')
+            urllib.request.urlretrieve(url, f'collage_maker/photos/cat{index}.png')
     else:
         response.raise_for_status()
+
+
+# def create_collage(photos: list, color, collage_size: tuple, collage_rows: int):
+#     collage = Image.new(color, collage_size)
+#     for photo in photos:
+#         photo.resize(collage_size[0]/collage_rows, collage_size[1]/collage_rows)
+#         collage.paste(photo, )
+
+# def create_same_photo_collage(photo_path,  color, collage_size: tuple, collage_rows: int, collage_columns: int):
+#     collage = Image.new(color, collage_size)
+#     if collage_columns > 0 and collage_rows > 0 and collage_size[0] > 0 and collage_size[1] > 0:
+#         photo = Image.open(photo_path).resize(collage_size[0]/collage_columns, collage_size[1]/collage_rows)
+#     #     TO DO: paste photo on appropriate coords based on collage_size, columns and rows
+#         for i in range(collage_rows):
+#             for j in range(collage_columns):
+#                 collage.paste(photo, (float(i * (collage_size[0]/collage_columns)),
+#                                       float(i * (collage_size[1]/collage_columns))))
+#
+#     else:
+#         raise ValueError("Collage columns, rows and size should be greater than 0.")
+#     return collage
 
 
 if __name__ == '__main__':
@@ -46,3 +67,4 @@ if __name__ == '__main__':
     small_collage.paste(cat1_img, (500, 500))
 
     small_collage.show()
+
