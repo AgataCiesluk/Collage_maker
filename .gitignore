@@ -132,4 +132,4 @@ dmypy.json
 .idea/
 
 # Collage maker
-photos/
+collage_maker/photos/
