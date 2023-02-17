@@ -38,16 +38,19 @@ def download_photos():
 #         photo.resize(collage_size[0]/collage_rows, collage_size[1]/collage_rows)
 #         collage.paste(photo, )
 
-def create_same_photo_collage(photo_path,  color, collage_size: tuple, collage_rows: int, collage_columns: int):
-    collage = Image.new(color, collage_size)
-    if collage_columns > 0 and collage_rows > 0 and collage_size[0] > 0 and collage_size[1] > 0:
-        photo = Image.open(photo_path).resize(collage_size[0]/collage_columns, collage_size[1]/collage_rows)
-    #     TO DO: paste photo on appropriate coords based on collage_size, columns and rows
-    #     for i in range(collage_columns):
-    #         collage.paste(photo, (float(i * (collage_size[0]/collage_columns)),
-    #                               float(i * (collage_size[1]/collage_columns)))
-    else:
-        raise ValueError("Collage columns, rows and size should be greater than 0.")
+# def create_same_photo_collage(photo_path,  color, collage_size: tuple, collage_rows: int, collage_columns: int):
+#     collage = Image.new(color, collage_size)
+#     if collage_columns > 0 and collage_rows > 0 and collage_size[0] > 0 and collage_size[1] > 0:
+#         photo = Image.open(photo_path).resize(collage_size[0]/collage_columns, collage_size[1]/collage_rows)
+#     #     TO DO: paste photo on appropriate coords based on collage_size, columns and rows
+#         for i in range(collage_rows):
+#             for j in range(collage_columns):
+#                 collage.paste(photo, (float(i * (collage_size[0]/collage_columns)),
+#                                       float(i * (collage_size[1]/collage_columns))))
+#
+#     else:
+#         raise ValueError("Collage columns, rows and size should be greater than 0.")
+#     return collage
 
 
 if __name__ == '__main__':
