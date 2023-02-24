@@ -11,7 +11,7 @@ API_ACCESS_KEY = os.getenv('API_ACCESS_KEY')
 
 
 def get_url_for_given_photos_params(topic, photos_quantity, api_key):
-    return f'https://api.unsplash.com/search/photos?client_id={api_key}&page=2&query={topic}&per_page={photos_quantity}'
+    return f'https://api.unsplash.com/search/photos?client_id={api_key}&page=1&query={topic}&per_page={photos_quantity}'
 
 
 def download_photos():
