@@ -38,33 +38,36 @@ def download_photos():
 #         photo.resize(collage_size[0]/collage_rows, collage_size[1]/collage_rows)
 #         collage.paste(photo, )
 
-# def create_same_photo_collage(photo_path,  color, collage_size: tuple, collage_rows: int, collage_columns: int):
-#     collage = Image.new(color, collage_size)
-#     if collage_columns > 0 and collage_rows > 0 and collage_size[0] > 0 and collage_size[1] > 0:
-#         photo = Image.open(photo_path).resize(collage_size[0]/collage_columns, collage_size[1]/collage_rows)
-#     #     TO DO: paste photo on appropriate coords based on collage_size, columns and rows
-#         for i in range(collage_rows):
-#             for j in range(collage_columns):
-#                 collage.paste(photo, (float(i * (collage_size[0]/collage_columns)),
-#                                       float(i * (collage_size[1]/collage_columns))))
-#
-#     else:
-#         raise ValueError("Collage columns, rows and size should be greater than 0.")
-#     return collage
+def create_same_photo_collage(photo_path, color, collage_size: tuple, collage_rows: int, collage_columns: int):
+    collage = Image.new(color, collage_size)
+    if collage_columns > 0 and collage_rows > 0 and collage_size[0] > 0 and collage_size[1] > 0:
+        photo = Image.open(photo_path).resize(
+            (collage_size[0] // collage_columns,
+             collage_size[1] // collage_rows))
+        for i in range(collage_rows):
+            for j in range(collage_columns):
+                collage.paste(photo,
+                              (j * (collage_size[0] // collage_columns),
+                               i * (collage_size[1] // collage_rows)))
+    else:
+        raise ValueError("Collage columns, rows and size should be greater than 0.")
+    return collage
 
 
 if __name__ == '__main__':
-    download_photos()
+    # download_photos()
 
     #     Create small collage
 
-    small_collage = Image.new("RGBA", (1000, 1000))
+    # small_collage = Image.new("RGBA", (1000, 1000))
+    #
+    # cat0_img = Image.open("photos/cat0.png").resize((500, 500))
+    # cat1_img = Image.open("photos/cat1.png").resize((500, 500))
+    #
+    # small_collage.paste(cat0_img, (0, 0))
+    # small_collage.paste(cat1_img, (500, 500))
+    #
+    # small_collage.show()
 
-    cat0_img = Image.open("photos/cat0.png").resize((500, 500))
-    cat1_img = Image.open("photos/cat1.png").resize((500, 500))
-
-    small_collage.paste(cat0_img, (0, 0))
-    small_collage.paste(cat1_img, (500, 500))
-
-    small_collage.show()
-
+    same_photo_collage = create_same_photo_collage('photos/cat1.png', 'RGB', (4000, 4000), 2, 4)
+    same_photo_collage.show()
