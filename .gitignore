@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# IDE info
+.idea/
+
+# Collage maker
+collage_maker/photos/
